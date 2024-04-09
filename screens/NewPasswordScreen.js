@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-const SignInScreen = () => (
+const NewPasswordScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>Sign In Screen</Text>
+    <Text>Confirm Email Screen</Text>
   </View>
 );
 
-export default SignInScreen;
+export default NewPasswordScreen;

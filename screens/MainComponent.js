@@ -2,43 +2,83 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import FirebaseApp  from "../screens/Firebase";
+import SignInScreen  from "../screens/SignInScreen";
+import SignUpScreen from "../screens/SignUpScreen";
+import ForgotPasswordScreen from "./ForgotPasswordScreen";
+import NewPasswordScreen from "./NewPasswordScreen";
+import ConfirmEmailScreen from "./ConfirmEmailScreen";
 
-// Example screens
-const HomeScreen = ({ navigation }) => (
-  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text onPress={() => navigation.navigate("Details")}>Home Screen</Text>
-  </View>
-);
-
-const DetailsScreen = () => (
-  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>Details Screen</Text>
-  </View>
-);
-
-// Stack Navigator setup
 const Stack = createStackNavigator();
 
-function StackNavigator() {
+const screenOptions = {
+  headerTintColor: "#fff",
+  headerStyle: { backgroundColor: "#040a2e" },
+};
+
+const HomeNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+    <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+      <Stack.Screen name="FantasyStaff Home" component={FirebaseApp} />
     </Stack.Navigator>
   );
 }
+
+const LoginNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator initialRouteName="Login" screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Login"
+        component={SignInScreen}
+      />
+      <Stack.Screen name="Sign Up" component={SignUpScreen} />
+      <Stack.Screen name="Confirm Email" component={ConfirmEmailScreen} />
+      <Stack.Screen name="Forgot Password" component={ForgotPasswordScreen} />
+      <Stack.Screen name="New Password" component={NewPasswordScreen} />
+    </Stack.Navigator>
+  );
+};
 
 // Drawer Navigator setup
 const Drawer = createDrawerNavigator();
 
 function MainComponent() {
   return (
-      <Drawer.Navigator initialRouteName="Stack">
-        <Drawer.Screen name="Stack" component={StackNavigator} />
-        {/* Add more screens or navigators as Drawer.Screen components here */}
-      </Drawer.Navigator>
+    <Drawer.Navigator initialRouteName="HomeStack">
+      <Drawer.Screen name="Home Screen" component={HomeNavigator} />
+      <Drawer.Screen name="Sign In" component={LoginNavigator} />
+      {/* Add more screens or navigators as Drawer.Screen components here */}
+    </Drawer.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  drawerHeader: {
+    backgroundColor: "#040a2e",
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+  },
+  drawerHeaderText: {
+    color: "#fff",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  drawerImage: {
+    margin: 10,
+    height: 60,
+    width: 60,
+  },
+  stackIcon: {
+    marginLeft: 10,
+    color: "#fff",
+    fontSize: 24,
+  },
+});
+
 
 export default MainComponent;
