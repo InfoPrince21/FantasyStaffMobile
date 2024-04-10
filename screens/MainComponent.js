@@ -9,6 +9,7 @@ import SignUpScreen from "../screens/SignUpScreen";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import NewPasswordScreen from "./NewPasswordScreen";
 import ConfirmEmailScreen from "./ConfirmEmailScreen";
+import TeamStatsComponent from "../components/TeamStatsComponent";
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,18 @@ const LoginNavigator = () => {
   );
 };
 
+const StatsNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Team Rankings"
+        component={TeamStatsComponent}
+      />
+    </Stack.Navigator>
+  );
+};
+
 // Drawer Navigator setup
 const Drawer = createDrawerNavigator();
 
@@ -49,6 +62,7 @@ function MainComponent() {
     <Drawer.Navigator initialRouteName="HomeStack">
       <Drawer.Screen name="Home Screen" component={HomeNavigator} />
       <Drawer.Screen name="Sign In" component={LoginNavigator} />
+      <Drawer.Screen name="Stats" component={StatsNavigator}/>
       {/* Add more screens or navigators as Drawer.Screen components here */}
     </Drawer.Navigator>
   );

@@ -1,0 +1,144 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { customAlphabet } from "nanoid";
+
+const Airtable = require("airtable");
+const base = new Airtable({
+  apiKey:
+    "pat4nh10f6PT2EoBm.8143dc2e79fe8b5a64a333ad1961c59cbddc50dd7937841959c15aba85b3bd26",
+}).base("appmqv083cLppisF5");
+const table = base("Staff");
+
+export const fetchAirTableStaff = createAsyncThunk(
+  "staff/fetchAirTableStaff",
+  async () => {
+    const records = await table.select({ view: "Grid view" }).firstPage();
+    const miniRecords = records.map((record) => ({
+      id: record.id,
+      fields: record.fields,
+    }));
+    return miniRecords;
+  }
+);
+
+export const addAirTableStaff = createAsyncThunk(
+  "staff/addAirTableStaff",
+  async (values, { dispatch }) => {
+    const nanoid = customAlphabet("1234567890", 4);
+    const records = await table.create(
+      [
+        {
+          fields: {
+            name: values.name,
+            id: parseInt(nanoid()),
+            image: [
+              {
+                url: "https://dl.airtable.com/.attachmentThumbnails/f115340ec561085e4744c11dbd3e69e1/bc515143",
+              },
+            ],
+            featured: "false",
+            quote: "Draft Me!",
+            featureInfo: "#1 Ranked Staff",
+          },
+        },
+      ],
+      function (err, records) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        records.forEach(function (record) {
+          //   console.log(record.getId());
+        });
+      }
+    );
+    dispatch(fetchAirTableStaff());
+    dispatch(fetchAirTableStaff());
+    return records;
+  }
+);
+
+const initialState = {
+  staffArray: [],
+  isLoading: false,
+  errMsg: "",
+};
+
+const staffSlice = createSlice({
+  name: "staff",
+  initialState,
+  reducers: {
+    removeStaff: (state, action) => {
+      state.staffArray = state.staffArray.filter(
+        (staff) => staff.id !== parseInt(action.payload)
+      );
+    },
+    setAddStaff: (state, action) => {
+      state.staffArray.push(action.payload);
+    },
+    setAirTableStaff: (state, action) => {
+      const airTableRecords = action.payload;
+      state.staffArray = airTableRecords.map((record) => ({
+        id: record.id,
+        fields: record.fields,
+      }));
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAirTableStaff.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAirTableStaff.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.errMsg = "";
+        const airTableRecords = action.payload;
+        const newArray = airTableRecords.map((record) => ({
+          id: record.id,
+          fields: record.fields,
+        }));
+        state.staffArray = newArray;
+      })
+      .addCase(fetchAirTableStaff.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errMsg = action.error ? action.error.message : "Fetch failed";
+      });
+  },
+});
+
+
+export default staffSlice.reducer;
+
+export const { setAirTableStaff, setAddStaff, removeStaff } =
+  staffSlice.actions;
+
+export const selectAllStaff = (state) => {
+  return state.staff.staffArray;
+};
+
+export const selectStaffById = (id) => (state) => {
+  return state.staff.staffArray.find(
+    (staff) => staff.fields.id === parseInt(id)
+  );
+};
+
+export const selectStaffByEmail = (email) => (state) => {
+  return state.staff.staffArray.find((staff) => staff.fields.email === email);
+};
+
+export const selectFeaturedStaff = (state) => {
+  return {
+    featuredItem: state.staff.staffArray.find(
+      (staff) => staff.fields.featured === "true"
+    ),
+    isLoading: state.teams.isLoading,
+    errMsg: state.teams.errMsg,
+  };
+};
+
+export const selectStaffImageByName = (name) => (state) => {
+  return state.staff.staffArray.find((staff) => staff.fields.name === name);
+};
+
+export const selectStaffImageUrlName = (name) => (state) => {
+  return state.staff.staffArray.filter((staff) => staff.fields.name === name);
+};
