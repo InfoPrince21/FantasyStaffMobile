@@ -24,7 +24,6 @@ const persistConfig = {
 const rootReducer = persistCombineReducers(persistConfig, {
   teams: teamsReducer,
   staff: staffReducer,
-  stats: statsReducer,
   // Add other reducers here if needed
 });
 

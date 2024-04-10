@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-const NewPasswordScreen = () => (
+const TeamDetialScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>New Password Screen</Text>
+    <Text>Team Details Screen</Text>
   </View>
 );
 
-export default NewPasswordScreen;
+export default TeamDetialScreen;

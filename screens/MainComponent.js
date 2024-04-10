@@ -6,10 +6,21 @@ import { StyleSheet } from "react-native";
 import FirebaseApp  from "../screens/Firebase";
 import SignInScreen  from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import AwardsScreen from "./AwardsScreen";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import NewPasswordScreen from "./NewPasswordScreen";
 import ConfirmEmailScreen from "./ConfirmEmailScreen";
 import TeamStatsComponent from "../components/TeamStatsComponent";
+import ChatScreen from "./ChatScreen";
+import DraftComponent from "../components/DraftComponent";
+import StudyFoodComponent from "../components/StudyFoodComponent";
+import StatsComponent from "../components/StatsComponent";
+import QuizComponent from "../components/QuizComponent";
+import StaffScreen from "./StaffScreen";
+import PrizesComponent from "../components/PrizesComponent";
+import TeamsScreen from "./TeamsScreen";
+import TeamDetialScreen from "./TeamDetialScreen";
+
 
 const Stack = createStackNavigator();
 
@@ -42,7 +53,7 @@ const LoginNavigator = () => {
   );
 };
 
-const StatsNavigator = () => {
+const TeamsNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
@@ -53,6 +64,88 @@ const StatsNavigator = () => {
     </Stack.Navigator>
   );
 };
+const TeamStatsNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Teams" component={TeamsScreen} />
+      <Stack.Screen name="Team Detial" component={TeamDetialScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const AwardsNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Awards Stack" component={AwardsScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const ChatNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Chat Room Stack" component={ChatScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const DraftNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Draft Room Stack" component={DraftComponent} />
+    </Stack.Navigator>
+  );
+};
+
+const StudyFoodNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Study Food Stack" component={StudyFoodComponent} />
+    </Stack.Navigator>
+  );
+};
+
+const RankingsNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Rankings Stack" component={StatsComponent} />
+    </Stack.Navigator>
+  );
+};
+
+const QuizNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Quiz" component={QuizComponent} />
+    </Stack.Navigator>
+  );
+};
+
+const PrizesNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Prizes Stack" component={PrizesComponent} />
+    </Stack.Navigator>
+  );
+};
+
+const StaffNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="Staff Stack" component={StaffScreen} />
+    </Stack.Navigator>
+  );
+};
+
 
 // Drawer Navigator setup
 const Drawer = createDrawerNavigator();
@@ -62,7 +155,16 @@ function MainComponent() {
     <Drawer.Navigator initialRouteName="HomeStack">
       <Drawer.Screen name="Home Screen" component={HomeNavigator} />
       <Drawer.Screen name="Sign In" component={LoginNavigator} />
-      <Drawer.Screen name="Stats" component={StatsNavigator}/>
+      <Drawer.Screen name="Team Stats" component={TeamStatsNavigator} />
+      <Drawer.Screen name="Awards" component={AwardsNavigator} />
+      <Drawer.Screen name="Chat Room" component={ChatNavigator} />
+      <Drawer.Screen name="Draft Room" component={DraftNavigator} />
+      <Drawer.Screen name="Study Food" component={StudyFoodNavigator} />
+      <Drawer.Screen name="Rankings" component={StatsComponent} />
+      <Drawer.Screen name="Quiz" component={QuizComponent} />
+      <Drawer.Screen name="Staff" component={StaffScreen} />
+      <Drawer.Screen name="Prizes" component={PrizesComponent} />
+      <Drawer.Screen name="Teams" component={TeamsNavigator} />
       {/* Add more screens or navigators as Drawer.Screen components here */}
     </Drawer.Navigator>
   );

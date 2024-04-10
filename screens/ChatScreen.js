@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-const NewPasswordScreen = () => (
+const ChatScreen = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>New Password Screen</Text>
+    <Text>Chat Screen</Text>
   </View>
 );
 
-export default NewPasswordScreen;
+export default ChatScreen;
