@@ -19,13 +19,11 @@ const persistConfig = {
   debug: true,
 };
 
-const rootReducer = persistCombineReducers(persistConfig, {
+export const store = configureStore({
+  reducer: persistCombineReducers(persistConfig, {
   teams: teamsReducer,
   // Add other reducers here if needed
-});
-
-export const store = configureStore({
-  reducer: rootReducer,
+}),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
