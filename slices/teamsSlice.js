@@ -452,7 +452,7 @@ const teamsSlice = createSlice({
   },
 });
 
-export default teamsSlice.reducer;
+export const teamsReducer = teamsSlice.reducer;
 
 export const {
   undoSetDraftRecap,
@@ -468,7 +468,7 @@ export const {
   undoDraftTeam2,
   undoDraftTeam3,
 } = teamsSlice.actions;
-export const teamsReducer = teamsSlice.reducer;
+
 
 export const selectAllTeams = (state) => {
   return state.teams.teamsArray;

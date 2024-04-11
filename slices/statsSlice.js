@@ -472,7 +472,7 @@ const statsSlice = createSlice({
   },
 });
 
-export default statsSlice.reducer;
+export const statsReducer = statsSlice.reducer;
 export const { addPlayerRankings } = statsSlice.actions;
 
 export const selectStats = (state) => {

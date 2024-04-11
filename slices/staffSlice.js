@@ -106,7 +106,7 @@ const staffSlice = createSlice({
 });
 
 
-export default staffSlice.reducer;
+export const staffReducer = staffSlice.reducer;
 
 export const { setAirTableStaff, setAddStaff, removeStaff } =
   staffSlice.actions;

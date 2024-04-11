@@ -11,9 +11,7 @@ import {
 import { persistStore } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { persistCombineReducers } from "redux-persist";
-import staffReducer from "../slices/staffSlice";
-import statsReducer from "../slices/statsSlice";
-import teamsReducer from "../slices/teamsSlice";
+import {teamsReducer} from "../slices/teamsSlice";
 
 const persistConfig = {
   key: "root",
