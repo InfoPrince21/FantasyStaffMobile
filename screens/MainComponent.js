@@ -19,7 +19,7 @@ import StaffScreen from "./StaffScreen";
 import PrizesComponent from "../components/PrizesComponent";
 import TeamsScreen from "./TeamsScreen";
 import TeamDetialScreen from "./TeamDetialScreen";
-import QuizScreen from "./QuizScreen";
+import QuizComponent from "../components/QuizComponenet";
 
 
 
@@ -124,7 +124,7 @@ const QuizNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="Quiz Stack" component={QuizScreen} />
+      <Stack.Screen name="Quiz Stack" component={QuizComponent} />
     </Stack.Navigator>
   );
 };

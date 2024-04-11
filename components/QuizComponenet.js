@@ -1,9 +1,9 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-const QuizScreen = () => (
+const QuizComponent = () => (
   <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-    <Text>Quiz Screen</Text>
+    <Text>Quiz Component</Text>
   </View>
 );
 
-export default QuizScreen;
+export default QuizComponent;
