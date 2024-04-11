@@ -15,11 +15,12 @@ import ChatScreen from "./ChatScreen";
 import DraftComponent from "../components/DraftComponent";
 import StudyFoodComponent from "../components/StudyFoodComponent";
 import StatsComponent from "../components/StatsComponent";
-import QuizComponent from "../components/QuizComponent";
 import StaffScreen from "./StaffScreen";
 import PrizesComponent from "../components/PrizesComponent";
 import TeamsScreen from "./TeamsScreen";
 import TeamDetialScreen from "./TeamDetialScreen";
+import QuizScreen from "./QuizScreen";
+
 
 
 const Stack = createStackNavigator();
@@ -123,7 +124,7 @@ const QuizNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="Quiz" component={QuizComponent} />
+      <Stack.Screen name="Quiz Stack" component={QuizScreen} />
     </Stack.Navigator>
   );
 };
@@ -160,10 +161,10 @@ function MainComponent() {
       <Drawer.Screen name="Chat Room" component={ChatNavigator} />
       <Drawer.Screen name="Draft Room" component={DraftNavigator} />
       <Drawer.Screen name="Study Food" component={StudyFoodNavigator} />
-      <Drawer.Screen name="Rankings" component={StatsComponent} />
-      <Drawer.Screen name="Quiz" component={QuizComponent} />
-      <Drawer.Screen name="Staff" component={StaffScreen} />
-      <Drawer.Screen name="Prizes" component={PrizesComponent} />
+      <Drawer.Screen name="Rankings" component={RankingsNavigator} />
+      <Drawer.Screen name="Quiz" component={QuizNavigator} />
+      <Drawer.Screen name="Staff" component={StaffNavigator} />
+      <Drawer.Screen name="Prizes" component={PrizesNavigator} />
       <Drawer.Screen name="Teams" component={TeamsNavigator} />
       {/* Add more screens or navigators as Drawer.Screen components here */}
     </Drawer.Navigator>

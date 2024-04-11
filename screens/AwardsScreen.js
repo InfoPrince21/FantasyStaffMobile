@@ -7,4 +7,3 @@ const AwardsScreen = () => (
 );
 
 export default AwardsScreen;
-g

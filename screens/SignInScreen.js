@@ -1,9 +1,6 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
-
 
 const SignInScreen = () => {
 
