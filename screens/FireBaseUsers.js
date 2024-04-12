@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const auth = getAuth();
 
-const SignUpScreen = () => {
+const FireBaseUsers = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default FireBaseUsers;

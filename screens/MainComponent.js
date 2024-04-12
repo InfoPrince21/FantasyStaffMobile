@@ -3,7 +3,7 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet } from "react-native";
-import FirebaseApp  from "../screens/Firebase";
+import FireBaseHome  from "./FireBaseHome";
 import SignInScreen  from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import AwardsScreen from "./AwardsScreen";
@@ -20,7 +20,7 @@ import PrizesComponent from "../components/PrizesComponent";
 import TeamsScreen from "./TeamsScreen";
 import TeamDetialScreen from "./TeamDetialScreen";
 import QuizComponent from "../components/QuizComponenet";
-
+import FireBaseUsers from "./FireBaseUsers";
 
 
 const Stack = createStackNavigator();
@@ -33,7 +33,13 @@ const screenOptions = {
 const HomeNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
-      <Stack.Screen name="FantasyStaff Home" component={FirebaseApp} />
+      <Stack.Screen name="FantasyStaff Home" component={FireBaseHome} />
+      <Stack.Screen name="SignInScreen" component={SignInScreen} />
+      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+      <Stack.Screen name="Confirm Email" component={ConfirmEmailScreen} />
+      <Stack.Screen name="Forgot Password" component={ForgotPasswordScreen} />
+      <Stack.Screen name="New Password" component={NewPasswordScreen} />
+      <Stack.Screen name="FireBaseUsers" component={FireBaseUsers} />
     </Stack.Navigator>
   );
 }
