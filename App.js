@@ -1,10 +1,9 @@
 import MainComponent from "./screens/MainComponent";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 import { store} from "./redux/store";
-import { PaperProvider } from "react-native-paper";
-// import Loading from "./components/LoadingComponent";
+// import { PaperProvider } from "react-native-paper";
+
 console.disableYellowBox = true;
 
 const App = () => {
@@ -12,9 +11,9 @@ const App = () => {
     
         <Provider store={store}>
           <NavigationContainer>
-            <PaperProvider>
+            {/* <PaperProvider> */}
               <MainComponent />
-            </PaperProvider>
+            {/* </PaperProvider> */}
           </NavigationContainer>
         </Provider>
     

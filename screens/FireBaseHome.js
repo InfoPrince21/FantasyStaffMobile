@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { Button, View, Text, ActivityIndicator, Alert } from "react-native";
-import { initializeApp } from "firebase/app";
+import { initializeApp, firebase } from "firebase/app";
+import "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { getAuth, onAuthStateChanged, signOut, indexedDBLocalPersistence } from 'firebase/auth';
+
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,6 +18,11 @@ const firebaseConfig = {
   measurementId: "G-EBD2KWXXZY",
 };
 
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 // Initialize Firebase only once
 const auth = getAuth(app, {
   persistence: indexedDBLocalPersistence,
@@ -24,6 +31,7 @@ const auth = getAuth(app, {
 });
 
 const app = initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 const FireBaseHome = () => {
   const navigation = useNavigation();
